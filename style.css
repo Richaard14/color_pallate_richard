@@ -1,0 +1,244 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --panel: #141b2d;
+  --line: #28334a;
+  --muted: #a8b2c7;
+  --accent: #a3e635;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top right, #202c48 0, transparent 36%), var(--bg);
+  color: #f8fafc;
+}
+
+main {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .76rem;
+  font-weight: 800;
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: 0.2s;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  margin: 12px 0;
+  letter-spacing: -.04em;
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: 0.2s;
+}
+
+.accent { color: var(--accent); }
+
+.intro {
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: 0.2s;
+}
+
+.panel {
+  background: rgba(20, 27, 45, .92);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 20px 60px #0002;
+}
+
+.upload {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  max-width: 100%;
+  color: var(--muted);
+}
+
+button {
+  border: 0;
+  background: var(--accent);
+  color: #17200b;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button:hover { filter: brightness(1.06); }
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.preview-box {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #0b1020;
+  border: 1px dashed #3a4760;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+#preview {
+  display: none;
+  max-width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.placeholder {
+  color: #8290aa;
+  text-align: center;
+  padding: 24px;
+  line-height: 1.6;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 0 0 14px;
+}
+
+.subheading {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+#palette {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.swatch {
+  border: 1px solid var(--line);
+  overflow: hidden;
+  border-radius: 13px;
+  background: #0e1526;
+}
+
+.swatch-color { height: 82px; }
+
+.swatch-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: .85rem;
+}
+
+.hex {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-weight: 800;
+}
+
+.copy {
+  background: #26334b;
+  color: #f8fafc;
+  padding: 7px 9px;
+  font-size: .75rem;
+}
+
+#status {
+  min-height: 22px;
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 14px 0 0;
+}
+
+.footer {
+  margin-top: 20px;
+  color: #7e8aa3;
+  font-size: .8rem;
+}
+
+@media (max-width: 700px) {
+  main { padding: 28px 0; }
+  .content { grid-template-columns: 1fr; }
+  .panel { padding: 16px; }
+  .preview-box { min-height: 220px; }
+}
+
+
+/* Animasi halaman saat dibuka */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Panel aplikasi muncul perlahan */
+.panel {
+  animation: fadeInUp 0.7s ease-out;
+}
+
+/* Kartu warna bergerak saat diarahkan */
+.color-card {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.color-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(163, 230, 53, 0.15);
+}
+
+/* Tombol lebih interaktif */
+button {
+  transition: transform 0.2s ease,
+              opacity 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Animasi preview gambar */
+#preview {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Menghormati pengaturan pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

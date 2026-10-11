@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Color Palette Extractor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.min.js"></script>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Image color tool</div>
+    <h1>Color Palette<br>Extractor<span class="accent">.</span></h1>
+    <p class="intro">Pilih gambar, lalu temukan warna-warna dominan beserta kode HEX-nya secara otomatis.</p>
+
+    <section class="panel">
+      <div class="upload">
+        <input id="fileInput" type="file" accept="image/*" aria-label="Pilih gambar">
+        <button id="resetBtn" type="button">Reset</button>
+      </div>
+      <div class="content">
+        <div>
+          <h2>Gambar pilihan</h2>
+          <div class="preview-box">
+            <img id="preview" alt="Pratinjau gambar yang dipilih">
+            <div id="placeholder" class="placeholder">Pilih file gambar dari perangkatmu untuk memulai.</div>
+          </div>
+        </div>
+        <div>
+          <h2>Palet warna <span class="subheading">(10 warna)</span></h2>
+          <div id="palette"></div>
+          <p id="status" role="status">Belum ada gambar yang dipilih.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
